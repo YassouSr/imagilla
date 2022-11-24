@@ -1,0 +1,60 @@
+@import url("fonts.css");
+
+:root {  --main-color: #0a3d62 }
+
+body { font-family: 'Noto Sans', sans-serif }
+
+.main-content { height: 100vh }
+
+.main-content h1 {
+    font-family: 'Baloo Tamma 2';
+    font-size: 6em;
+    color: var(--main-color);
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 5px var(--main-color);
+}
+
+/* small screens */
+@media(max-width: 576px) {
+    .main-content h1 { font-size: 3.8em }
+}
+
+/* medium screens */
+@media(min-width: 600px) and (max-width: 750px) {
+    .main-content h1 { font-size: 4.2em }
+}
+
+/* extra large screens */
+@media(min-width: 1000px) {
+    .main-content h1 { letter-spacing: 7px }
+}
+
+.main-content h2 { color: var(--main-color); font-size: 1.1em }
+
+/* start search box*/
+.search-box { border-bottom: 1px solid #ccc }
+
+.search-box a { text-decoration: none }
+
+.search-box h1 {
+    margin: 0;
+    font-family: 'Baloo Tamma 2';
+    font-size: 3em;
+    font-weight: bold;
+    color: var(--main-color)
+}
+
+/* large screens */
+@media (max-width: 992px) {
+    .search-box h1 { font-size: 2.4em; padding-top: 5px }
+}
+
+/* extra large screens */
+@media (min-width: 1300px) {
+    .search-box h1 { font-size: 3.2em }
+}
+
+/*start search results */
+.search-results { padding-right: 1.4em; padding-left: 1.4em }

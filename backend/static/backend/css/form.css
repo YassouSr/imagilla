@@ -1,0 +1,45 @@
+/* start url-search */
+.form-control { width: 99% }
+
+.url-search input.form-control {
+    padding: 1.2em 4em 1.3em 2.5em;
+    border: none;
+    border-radius: 5em;
+    color: #000;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.47);
+}
+
+.url-search input.form-control:focus { outline: 0 }
+
+.url-search .icon { top: 0; left: 5px }
+
+.url-search .icon i { color: var(--main-color) }
+
+
+/* start img-search */
+.img-search { top: 0; right: 0; width: 62px; z-index: 1 }
+
+.img-search .seperator { height: 80%; width: 1px; background-color: #ccc }
+
+.img-search .icon { width: 73%; padding: 2px; background-color: transparent }
+
+.img-search .icon::before {
+    font-style: normal;
+    text-rendering: auto;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 1.5em;
+    content: "\f030";
+    color: var(--main-color)
+}
+
+.img-search input[type='file'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    padding: 5px;
+    opacity: 0;
+    z-index: 2
+}

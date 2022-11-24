@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'backend/base.html' %}
+
+    <title>{% block title %}Error - imagilla{% endblock %}</title>
+
+</head>
+<body>
+
+    <!-- start search results -->
+    {% block search_results %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-12 text-center mb-md-0 mb-4">
+                    <i class="fas fa-exclamation-circle fa-5x" style="color: #db9066"></i>
+                </div>
+                <div class="col-md col-12">
+                    {% if errorType == "non-existent-url" %}
+                        <p>This URL:</p>
+                        <strong style="display: block;word-break: break-word;margin-bottom: 1em;padding: 0 1em;">
+                            {{ errorText }}
+                        </strong>
+                        <p>doesn't exist. Please try again with a valid URL.</p>
+                    {% endif %}
+                    {% if errorType == "img-url-error" %}
+                        <p>This URL:</p>
+                        <strong style="display: block;word-break: break-word;margin-bottom: 1em;padding: 0 1em;">
+                            {{errorText}}
+                        </strong>
+                        <p>doesn't refer to an image or the image is not publicly acceptable</p>
+                    {% endif %}
+                    {% if errorType == "img-ext-error" %}
+                        <p>Sorry ! This image format &nbsp; - &nbsp;&nbsp; <strong>{{errorText|upper}}</strong> &nbsp;&nbsp; - &nbsp; is not supported.</p>
+                        <p>Please try again with the following image formats :</p>
+                        <ul> 
+                            <li>JPG</li>
+                            <li>PNG</li>
+                            <li>JPEG</li>
+                        </ul>
+                    
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    <!-- end search results -->
+
+    
+    {% block script_code %}
+        <script>
+            var winh = $(window).height();
+            var boxh = $(".search-box").outerHeight();
+            var footh = $(".footer").outerHeight(); 
+            $('.search-results').css({'min-height': winh - boxh - footh});
+        </script>
+    {% endblock %}
+
+</body>
+</html>

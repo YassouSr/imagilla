@@ -1,0 +1,21 @@
+/* start footer */
+.footer { color: #888; background-color: #eee }
+
+.footer ul li { 
+    display: inline-block;
+    width: 50px;
+    height: 100%;
+    text-align: center
+}
+
+.footer .footer-link { 
+    display: inline-block;
+    color: #888;
+    width: 30px;
+    border: 1px solid transparent;
+    border-radius: 50%
+}
+
+.footer .footer-link:hover { color: var(--main-color); background-color: rgba(95,99,104,0.24) }
+
+.footer .footer-links { border-bottom: 1px solid #dcd8d8 }

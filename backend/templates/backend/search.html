@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'backend/base.html' %}
+    {% load static %} 
+    
+    <title>{% block title %}imagilla search{% endblock %}</title>
+
+    {% block extra_css %}
+        <link rel="stylesheet" href="{% static 'backend/css/ekko-lightbox.css' %}">
+        <style type="text/css" media="screen">
+            .query-class {
+                    padding-left: 17px;
+                    padding-right: 17px;
+                    padding-top: 6px;
+                    padding-bottom: 6px;
+                    border: 1px solid #9cb0d8;
+                    border-radius: 50px;
+                    background: rgba(10, 61, 98, 0.26)
+            }
+            
+            .search-results .row > div { padding: 5px } 
+
+            .search-results img { object-fit: cover; width: 100% }
+            
+            .search-results img:hover { opacity: 0.9; box-shadow: 0 0px 8px 0px rgba(32, 33, 36, 0.47) }
+
+            .modal-body { padding: 0 } /* lightbox */
+        </style> 
+    {% endblock %}
+
+</head>
+<body>
+
+    {% block class_type %}
+        <div class="offset-lg-3 col-lg-9 offset-md-3 col-md-9 col-12 pt-md-3 pt-4 pb-0 pl-4 text-left">
+            <span class="query-class">
+                Search for: {{ query_label }}
+            </span>
+        </div>
+    {% endblock %}
+
+    {% block search_results %}
+        {% for row in results  %}
+            <div class="row no-gutters">
+                {% for url in row %}
+                    <div class="col-md-3 col-6">
+                        <a href="{{url}}" data-toggle="lightbox" data-gallery="search-results-images">
+                            <img src="{{url}}">
+                        </a> 
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% endblock %}
+
+    {% block script_code %}
+        <script src="{% static 'backend/js/ekko-lightbox.js' %}"></script>
+        <script>
+            var width = $(".search-results img").outerWidth();
+            $(".search-results img").outerHeight(width);
+
+            $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                    event.preventDefault();
+                    $(this).ekkoLightbox({});
+            });
+        </script>
+    {% endblock %}
+        
+</body>
+</html>

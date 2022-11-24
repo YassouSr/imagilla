@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %} 
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'backend/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/css/footer.css' %}">
+
+    {% block extra_css %}{% endblock %}
+
+</head>
+<body>
+
+    <!-- start search box -->
+    <div class="search-box py-4 px-md-4 px-1 text-center">
+        <div class="row no-gutters h-100">
+            <div class="col-md-3 col-12 text-md-left pt-1">
+                <a href="http://127.0.0.1:8000/">
+                    <h1>imagilla</h1>
+                </a>
+            </div>
+            <div class="col-md col-12 pt-md-2 pt-3">
+                <form class="position-relative" action="{% url 'homeview' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="url-search">
+                        <input type="url" name="urlField" maxlength="1000" class="form-control" autofocus="true" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Enter a URL or Upload an image" id="id_urlField">
+                        <span class="icon py-2 pl-2 position-absolute"><i class="fas fa-search"></i></span>
+                    </div>
+            
+                    <div class="img-search d-flex align-items-center position-absolute h-100">
+                        <span class="seperator"></span>
+                        <div class="icon h-100"></div>
+                        <input type="file" name="upload_field" accept="image/*" id="id_upload_field">
+                    </div>
+                </form> 
+            </div>
+            {% block class_type %}{% endblock %}
+        </div>
+    </div>
+    <!-- end search box -->
+
+    
+    <!-- start search results -->
+    <div class="search-results py-4">
+        {% block search_results %}{% endblock %}
+    </div>
+    <!-- end search results -->
+
+    <!-- start error and search pages footer -->
+    <footer class="footer py-2 px-md-4 px-1 text-center">
+        <div class="row no-gutters">
+            <div class="col-lg-6 col-12 text-lg-left mb-lg-0 mb-2">
+                Copyrights 2020 imagilla &copy; All Rights Reserved 
+            </div>
+            <div class="col-lg-6 col-12 text-lg-right">
+                <ul class="list-unstyled mb-0">
+                    <li>
+                        <a class="footer-link" target="_blank" href="https://www.facebook.com/hin.atta.731">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="footer-link" target="_blank" href="mailto:yasmineyaw@outlook.com">
+                            <i class="fas fa-at"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="footer-link" target="_blank" href="https://www.kaggle.com/yassou432">
+                            <i class="fab fa-kaggle"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="footer-link" target="_blank" href="https://github.com/GloryClover">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- end footer -->
+
+    <script src="{% static 'backend/js/jquery.slim.min.js' %}"></script>
+    <script src="{% static 'backend/js/popper.min.js' %}"></script>
+    <script src="{% static 'backend/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'backend/js/form.js' %}"></script>
+
+    <!-- Script for each page -->
+    {% block script_code %}{% endblock %}
+
+</body>
+</html>
